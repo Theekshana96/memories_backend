@@ -5,6 +5,7 @@ import PostMessage from "../models/postMessage.js";
 
 const router = express.Router();
 
+// Get all posts
 export const getPosts = async (req, res) => {
   try {
     const postMessages = await PostMessage.find();
@@ -15,6 +16,7 @@ export const getPosts = async (req, res) => {
   }
 };
 
+//get a post
 export const getPost = async (req, res) => {
   const { id } = req.params;
 
@@ -27,6 +29,7 @@ export const getPost = async (req, res) => {
   }
 };
 
+//create post
 export const createPost = async (req, res) => {
   const { title, message, selectedFile, creator, tags } = req.body;
 
@@ -47,6 +50,7 @@ export const createPost = async (req, res) => {
   }
 };
 
+//update post 
 export const updatePost = async (req, res) => {
   const { id } = req.params;
   const { title, message, creator, selectedFile, tags } = req.body;
@@ -61,6 +65,7 @@ export const updatePost = async (req, res) => {
   res.json(updatedPost);
 };
 
+//deletePost
 export const deletePost = async (req, res) => {
   const { id } = req.params;
 
